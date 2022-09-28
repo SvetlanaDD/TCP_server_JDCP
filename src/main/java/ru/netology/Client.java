@@ -12,13 +12,25 @@ public class Client {
 
 
     public static void main(String[] arg) {
-        final String name = "Маруся";
+//        final String name = "Маруся";
         try (Socket clientSocket = new Socket(HOST, PORT);
              PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true); // поток выхода
              BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))) // поток
         {
-            out.println(name);
-            System.out.println(in.readLine());
+            if (in.readLine().equals("???")) {
+                out.println("москва");
+                System.out.println("москва");
+                System.out.println(in.readLine());
+            } else {
+                out.println("пушкин");
+                System.out.println("пушкин");
+//                out.println("армавир");
+//                System.out.println("армавир");
+//                out.println(("ростов"));
+//                System.out.println("ростов");
+                System.out.println(in.readLine());
+            }
+
 
         } catch (IOException e) {
             throw new RuntimeException(e);
